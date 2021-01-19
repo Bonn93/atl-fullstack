@@ -35,7 +35,7 @@ docker run -d \
 -v $HOME/jira:/var/atlassian/application-data/jira \
 -e JVM_MINIMUM_MEMORY=1536m \
 -e JVM_MAXIMUM_MEMORY=1536m \
--e ATL_JDBC_URL="jdbc:postgresql://psql:5432/jira" \
+-e ATL_JDBC_URL="jdbc:postgresql://$network-psql:5432/jira" \
 -e ATL_JDBC_USER=jira \
 -e ATL_JDBC_PASSWORD=jira \
 -e ATL_DB_DRIVER="org.postgresql.Driver" \
@@ -56,7 +56,7 @@ docker run -d \
 -e JDBC_DRIVER="org.postgresql.Driver" \
 -e JDBC_USER=bitbucket \
 -e JDBC_PASSWORD=bitbucket \
--e JDBC_URL="jdbc:postgresql://psql:5432/bitbucket" \
+-e JDBC_URL="jdbc:postgresql://$network-psql:5432/bitbucket" \
 -e ELASTICSEARCH_ENABLED=false \
 atlassian/bitbucket-server:latest
 
@@ -87,7 +87,7 @@ docker run -d \
 -v $HOME/connie:/var/atlassian/application-data/confluence \
 -e JVM_MINIMUM_MEMORY=1536m \
 -e JVM_MAXIMUM_MEMORY=1536m \
--e ATL_JDBC_URL="jdbc:postgresql://psql:5432/confluence" \
+-e ATL_JDBC_URL="jdbc:postgresql://$network-psql:5432/confluence" \
 -e ATL_JDBC_USER=confluence \
 -e ATL_JDBC_PASSWORD=confluence \
 -e ATL_DB_TYPE=postgresql \
